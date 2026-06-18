@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Elite network managing bespoke properties, occupancy cycles, concierge request routing and luxury assets.">
+  <title>AURA ELITE | Luxury Concierge & Private Villa Management</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23111115'/><text x='50%' y='68%' font-family='serif' font-size='60' fill='%23B89047' text-anchor='middle'>Æ</text></svg>">
+  
+  <!-- FontAwesome for Premium Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Luxury Serif & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       GLOBAL HEADER & NAVIGATION
+       ========================================================================== -->
+  <header id="header-wrapper" class="header-wrapper">
+    <div class="container header-container">
+      <!-- Logo -->
+      <a href="#" class="logo-link" data-route="home1-view">
+        <div class="logo-icon">Æ</div>
+        <div>
+          <span class="logo-text">Aura Elite</span>
+          <span class="logo-tagline">Private Network</span>
+        </div>
+      </a>
+
+      <!-- Middle Menu Options -->
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item" id="nav-home">
+            <a href="#" class="nav-link">Home <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#" data-route="home1-view">Home 1</a></li>
+              <li class="dropdown-item"><a href="#" data-route="home2-view">Home 2</a></li>
+            </ul>
+          </li>
+          <li class="nav-item" id="nav-about">
+            <a href="#" class="nav-link" data-route="about-view">About</a>
+          </li>
+          <li class="nav-item" id="nav-services">
+            <a href="#" class="nav-link" data-route="services-view">Services</a>
+          </li>
+          <li class="nav-item" id="nav-contact">
+            <a href="#" class="nav-link" data-route="contact-view">Contact</a>
+          </li>
+          <li class="nav-item" id="nav-dashboard">
+            <a href="#" class="nav-link">Dashboard <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="#" data-route="user-dashboard-view">User Dashboard</a></li>
+              <li class="dropdown-item"><a href="#" data-route="admin-dashboard-view">Admin Dashboard</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Right Actions (Toggles, Auth) -->
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button class="toggle-btn theme-toggle" title="Toggle Theme" id="theme-toggle-header">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <!-- RTL/LTR Toggle -->
+        <button class="toggle-btn rtl-toggle lang-toggle" title="Toggle Direction" id="rtl-toggle-header">
+          RTL
+        </button>
+        <!-- Login Trigger -->
+        <button class="btn btn-secondary login-trigger" id="login-trigger-header">
+          Login
+        </button>
+        <!-- Mobile Hamburguer Trigger -->
+        <button class="toggle-btn hamburger-btn" id="hamburger-btn" title="Open Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <button class="toggle-btn mobile-drawer-close" id="mobile-drawer-close" title="Close Menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <ul class="mobile-menu-list">
+      <li class="mobile-menu-item has-submenu">
+        <div class="menu-title-wrapper">
+          <span class="menu-title">Home</span>
+          <i class="fa-solid fa-chevron-down submenu-toggle-icon"></i>
+        </div>
+        <ul class="mobile-submenu">
+          <li><a href="#" data-route="home1-view">Home 1</a></li>
+          <li><a href="#" data-route="home2-view">Home 2</a></li>
+        </ul>
+      </li>
+      <li class="mobile-menu-item">
+        <a href="#" class="menu-title" data-route="about-view">About</a>
+      </li>
+      <li class="mobile-menu-item">
+        <a href="#" class="menu-title" data-route="services-view">Services</a>
+      </li>
+      <li class="mobile-menu-item">
+        <a href="#" class="menu-title" data-route="contact-view">Contact</a>
+      </li>
+      <li class="mobile-menu-item has-submenu">
+        <div class="menu-title-wrapper">
+          <span class="menu-title">Dashboard</span>
+          <i class="fa-solid fa-chevron-down submenu-toggle-icon"></i>
+        </div>
+        <ul class="mobile-submenu">
+          <li><a href="#" data-route="user-dashboard-view">User Dashboard</a></li>
+          <li><a href="#" data-route="admin-dashboard-view">Admin Dashboard</a></li>
+        </ul>
+      </li>
+      <li class="mobile-menu-item" style="border-top: 1px solid var(--border-light); padding-top: 20px; margin-top: 20px; display: flex; flex-direction: column; gap: 15px;">
+        <div class="mobile-toggles-wrapper" style="display: flex; gap: 20px; align-items: center; justify-content: center;">
+          <button class="toggle-btn theme-toggle" title="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <button class="toggle-btn rtl-toggle lang-toggle" title="Toggle LTR/RTL">
+            RTL
+          </button>
+        </div>
+        <button class="btn btn-secondary login-trigger btn-full" style="text-align: center; width: 100%;">Login</button>
+      </li>
+    </ul>
+  </div>
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+
+  <!-- ==========================================================================
+       MAIN VIEW CONTAINER (SPA CONTENT)
+       ========================================================================== -->
+  <main class="main-content-area" id="main-content-area">
+
+    <!-- ----------------------------------------------------------------------
+         HOME 1 VIEW - Editorial Elegance Landing
+         ---------------------------------------------------------------------- -->
+    <div id="home1-view" class="spa-view active">
+      <!-- Section 1: Hero Cover -->
+      <section class="hero-h1" style="background-image: url('villa6.jpg');" id="h1-hero-sec">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <span class="hero-tag">Aura Elite Private Network</span>
+          <h1 class="hero-title">High-Fidelity Yacht & Villa Network</h1>
+          <p class="hero-desc">Bespoke asset custody, occupancy intelligence, and private concierge pipelines for discerning property owners.</p>
+          
+          <!-- Search Panel -->
+          <div class="glass-panel search-panel">
+            <div class="search-group">
+              <span class="search-label">Destination</span>
+              <input type="text" class="search-input" placeholder="Monaco, Maldives, Aspen..." id="search-dest-h1">
+            </div>
+            <div class="search-group">
+              <span class="search-label">Availability</span>
+              <input type="text" class="search-input" placeholder="Select Dates" onfocus="(this.type='date')" id="search-date-h1">
+            </div>
+            <div class="search-group">
+              <span class="search-label">Guest Access</span>
+              <input type="number" class="search-input" placeholder="Guests count" id="search-guests-h1">
+            </div>
+            <div class="search-btn-wrapper">
+              <button class="btn btn-primary" onclick="alert('Searching curated network databases...')">Search</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Curated Collection -->
+      <section class="section-spacing container" id="h1-collection-sec">
+        <div class="section-header center">
+          <span class="subtitle">Curated Assets</span>
+          <h2 class="title">Elite Real Estate Showcase</h2>
+          <p class="desc">A quiet inspection of our most requested private properties and yield-generating retreats.</p>
+        </div>
+        <div class="grid-3 villas-grid">
+          <!-- Villa 1 -->
+          <div class="villa-card">
+            <div class="villa-img-container">
+              <img src="v2.jpg" class="villa-img" alt="Villa Aurora">
+              <span class="villa-badge">Trending</span>
+            </div>
+            <div class="villa-info">
+              <span class="villa-location">Monaco Coastline</span>
+              <h3 class="villa-title">Villa Aurora</h3>
+              <div class="villa-details">
+                <div class="villa-detail-item"><i class="fa-solid fa-bed"></i> 6 Beds</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-bath"></i> 7 Baths</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-expand"></i> 8,400 sq ft</div>
+              </div>
+              <div class="villa-price">$18,500 <span>/ Night</span></div>
+              <button class="btn btn-secondary login-trigger">Inquire Booking</button>
+            </div>
+          </div>
+          <!-- Villa 2 -->
+          <div class="villa-card">
+            <div class="villa-img-container">
+              <img src="v3.jpg" class="villa-img" alt="Villa Celeste">
+              <span class="villa-badge">Featured</span>
+            </div>
+            <div class="villa-info">
+              <span class="villa-location">Amalfi Cliffs</span>
+              <h3 class="villa-title">Villa Celeste</h3>
+              <div class="villa-details">
+                <div class="villa-detail-item"><i class="fa-solid fa-bed"></i> 8 Beds</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-bath"></i> 9 Baths</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-expand"></i> 11,200 sq ft</div>
+              </div>
+              <div class="villa-price">$24,000 <span>/ Night</span></div>
+              <button class="btn btn-secondary login-trigger">Inquire Booking</button>
+            </div>
+          </div>
+          <!-- Villa 3 -->
+          <div class="villa-card">
+            <div class="villa-img-container">
+              <img src="v4.jpg" class="villa-img" alt="Villa Solis">
+              <span class="villa-badge">Exclusive</span>
+            </div>
+            <div class="villa-info">
+              <span class="villa-location">Maldives Private Island</span>
+              <h3 class="villa-title">Villa Solis</h3>
+              <div class="villa-details">
+                <div class="villa-detail-item"><i class="fa-solid fa-bed"></i> 5 Beds</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-bath"></i> 6 Baths</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-expand"></i> 7,900 sq ft</div>
+              </div>
+              <div class="villa-price">$32,000 <span>/ Night</span></div>
+              <button class="btn btn-secondary login-trigger">Inquire Booking</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Bespoke Services -->
+      <section class="section-spacing container" id="h1-services-sec">
+        <div class="section-header">
+          <span class="subtitle">Bespoke Concierge</span>
+          <h2 class="title">Seamless Lifestyle Operations</h2>
+          <p class="desc">A multi-tiered menu of private services handles everything from helicopter transfers to custom gastronomic rosters.</p>
+        </div>
+        <div class="grid-4">
+          <!-- Card 1 -->
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-plane"></i></div>
+            <h3 class="feature-title">Private Jet Charters</h3>
+            <p class="feature-desc">Global flight scheduling and priority VIP custom clearances at your disposal 24/7.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-ship"></i></div>
+            <h3 class="feature-title">Yacht Logistics</h3>
+            <p class="feature-desc">Superyacht charters, deepwater mooring, and custom coastal itineraries managed quietly.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-utensils"></i></div>
+            <h3 class="feature-title">Michelin Chefs</h3>
+            <p class="feature-desc">In-villa culinary operations, private wine collection pairing, and nutritional curation.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3 class="feature-title">Close Protection</h3>
+            <p class="feature-desc">Elite discrete security rosters and secure high-armored transit logistics globally.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Interactive Occupancy Preview -->
+      <section class="section-spacing container" id="h1-occupancy-sec">
+        <div class="section-header center">
+          <span class="subtitle">Occupancy Intelligence</span>
+          <h2 class="title">Live Availability Preview</h2>
+          <p class="desc">Check global villa occupancy blocks instantly. Connect to the owners dashboard for complete schedule control.</p>
+        </div>
+        <div class="occupancy-preview-container">
+          <div class="opp-sidebar">
+            <h3 class="font-serif" style="font-size: 1.4rem;">Select Villa</h3>
+            <ul class="opp-villa-selector">
+              <li class="opp-selector-item active" data-villa="villa-aurora">Villa Aurora (Monaco)</li>
+              <li class="opp-selector-item" data-villa="villa-celeste">Villa Celeste (Amalfi)</li>
+              <li class="opp-selector-item" data-villa="villa-solis">Villa Solis (Maldives)</li>
+            </ul>
+            <div style="margin-top: 30px;">
+              <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 15px;">Villa owners can block off private slots or review guest timelines directly from the secure portal.</p>
+              <button class="btn btn-primary login-trigger">Access Owner Portal</button>
+            </div>
+          </div>
+          <div class="opp-calendar-view">
+            <div class="opp-cal-header">
+              <h4 class="font-serif" style="font-size: 1.25rem;"><i class="fa-regular fa-calendar-days"></i> October 2026</h4>
+              <div style="display: flex; gap: 12px; font-size: 0.75rem;">
+                <span><i class="fa-solid fa-square" style="color: rgba(229, 75, 75, 0.2);"></i> Booked</span>
+                <span><i class="fa-solid fa-square" style="color: rgba(75, 181, 67, 0.2);"></i> Available</span>
+              </div>
+            </div>
+            <div class="opp-cal-grid" id="opp-calendar-grid">
+              <div class="opp-cal-day-header">Sun</div>
+              <div class="opp-cal-day-header">Mon</div>
+              <div class="opp-cal-day-header">Tue</div>
+              <div class="opp-cal-day-header">Wed</div>
+              <div class="opp-cal-day-header">Thu</div>
+              <div class="opp-cal-day-header">Fri</div>
+              <div class="opp-cal-day-header">Sat</div>
+              <!-- Days inserted dynamically by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Exclusive Club (Stats section) -->
+      <div class="container">
+        <section class="stats-split-section" id="h1-stats-sec">
+          <div class="stats-split-img" style="background-image: url('v5.jpg');"></div>
+          <div class="stats-split-content">
+            <span class="subtitle" style="color: var(--color-accent); font-weight: 600; text-transform: uppercase;">Private Membership</span>
+            <h2 class="title font-serif" style="font-size: 2.8rem; line-height: 1.2; margin-top: 10px;">The Aura Elite Club</h2>
+            <p class="desc" style="color: var(--text-secondary); margin-top: 16px;">Our invitation-only membership grants property owners and charter clients access to a curated system of luxury travel assets with optimized yield pathways.</p>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-num">170+</div>
+                <div class="stat-label">Luxury Villas</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">12h</div>
+                <div class="stat-label">Response Time</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">14</div>
+                <div class="stat-label">Global Hubs</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-num">98%</div>
+                <div class="stat-label">Yield Retention</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Section 6: Press Accolades & Newsletter -->
+      <section class="section-spacing container" id="h1-press-sec">
+        <div class="press-grid">
+          <span class="press-logo">Forbes Travel</span>
+          <span class="press-logo">Condé Nast</span>
+          <span class="press-logo">Robb Report</span>
+          <span class="press-logo">Elite Traveler</span>
+        </div>
+        
+        <div class="newsletter-box">
+          <h3 class="font-serif" style="font-size: 2.2rem; margin-bottom: 10px;">Join the Private Ledger</h3>
+          <p class="text-secondary" style="max-width: 500px; margin: 0 auto;">Subscribers receive discrete notifications regarding network property acquisitions, dry-dock yacht availability, and yield statements.</p>
+          <form class="newsletter-form" id="newsletter-form-h1" onsubmit="event.preventDefault(); alert('Subscribed to Private Ledger'); this.reset();">
+            <input type="email" placeholder="Enter secure email address" required id="newsletter-email-h1">
+            <button class="btn btn-primary" type="submit">Join Ledger</button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         HOME 2 VIEW - Premium Split Showcase Landing
+         ---------------------------------------------------------------------- -->
+    <div id="home2-view" class="spa-view">
+      <!-- Section 1: Showcase Hero (Redesigned) -->
+      <section class="hero-h2" style="background-image: url('villa5.jpg');" id="h2-hero-sec">
+        <div class="hero-overlay"></div>
+        <div class="container hero-h2-container">
+          <div class="hero-h2-content">
+            <span class="hero-tag">Aura Elite Network</span>
+            <h1 class="hero-h2-title font-serif">Curating High-Yield Villa Portfolios</h1>
+            <p class="hero-h2-desc">Direct pipelines connecting high-net-worth real estate owners to global high-tier charter audiences with complete sovereign ledger security.</p>
+            
+            <div class="hero-h2-bullets">
+              <span class="bullet-item"><i class="fa-solid fa-circle-nodes"></i> Off-Market Custody</span>
+              <span class="bullet-item"><i class="fa-solid fa-chart-line"></i> 18.4% Average Yield</span>
+              <span class="bullet-item"><i class="fa-solid fa-key"></i> Automated Custody</span>
+            </div>
+            
+            <div class="hero-h2-actions">
+              <button class="btn btn-primary login-trigger">Access Dashboard</button>
+              <button class="btn btn-secondary" data-route="contact-view">Private Inquiry</button>
+            </div>
+          </div>
+          
+          <!-- Floating Spec Card on the Right -->
+          <div class="hero-h2-spec glass-panel">
+            <div class="spec-header">
+              <span class="spec-label">Active Showcase</span>
+              <span class="pulse-indicator"></span>
+            </div>
+            <h3 class="spec-title font-serif">Villa Zephyr</h3>
+            <p class="spec-desc">Coastline cliffs estate in Monaco. Fully integrated with automated guest booking protocols.</p>
+            <ul class="spec-mini-list">
+              <li><span>Jurisdiction:</span> <strong>Monaco Coast</strong></li>
+              <li><span>Net Yield:</span> <strong style="color: var(--color-accent);">14.2%</strong></li>
+              <li><span>Security Level:</span> <strong>Tier-1 Active</strong></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Destinations Showcase -->
+      <section class="section-spacing container" id="h2-dest-sec">
+        <div class="section-header center">
+          <span class="subtitle">Global Jurisdictions</span>
+          <h2 class="title">Our Elite Destination Hubs</h2>
+          <p class="desc">A meticulous collection of hubs supporting full logistics, private aviation networks, and security protocols.</p>
+        </div>
+        <div class="grid-4">
+          <!-- Monaco -->
+          <div class="dest-card" data-route="services-view">
+            <img src="v7.jpg" class="dest-img" alt="Monaco">
+            <div class="dest-overlay"></div>
+            <div class="dest-content">
+              <h3 class="dest-title font-serif">Monaco</h3>
+              <span class="dest-properties">42 Properties Managed</span>
+            </div>
+          </div>
+          <!-- Amalfi Coast -->
+          <div class="dest-card" data-route="services-view">
+            <img src="v8.jpg" class="dest-img" alt="Amalfi">
+            <div class="dest-overlay"></div>
+            <div class="dest-content">
+              <h3 class="dest-title font-serif">Amalfi</h3>
+              <span class="dest-properties">29 Properties Managed</span>
+            </div>
+          </div>
+          <!-- Aspen -->
+          <div class="dest-card" data-route="services-view">
+            <img src="v9.jpg" class="dest-img" alt="Aspen">
+            <div class="dest-overlay"></div>
+            <div class="dest-content">
+              <h3 class="dest-title font-serif">Aspen</h3>
+              <span class="dest-properties">18 Properties Managed</span>
+            </div>
+          </div>
+          <!-- Maldives -->
+          <div class="dest-card" data-route="services-view">
+            <img src="v10.jpg" class="dest-img" alt="Maldives">
+            <div class="dest-overlay"></div>
+            <div class="dest-content">
+              <h3 class="dest-title font-serif">Maldives</h3>
+              <span class="dest-properties">22 Properties Managed</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Bespoke Experiences Gallery -->
+      <section class="section-spacing container" id="h2-exp-sec">
+        <div class="section-header">
+          <span class="subtitle">Signature Experiences</span>
+          <h2 class="title">Beyond Accommodation</h2>
+          <p class="desc">We orchestrate hyper-customized local itineraries with military precision and VIP access.</p>
+        </div>
+        <div class="masonry-grid">
+          <!-- Exp 1 -->
+          <div class="exp-card">
+            <div class="exp-img-wrapper">
+              <img src="v11.jpg" class="exp-img" alt="Wine tasting">
+            </div>
+            <div class="exp-body">
+              <span class="exp-tag">Gastronomy</span>
+              <h3 class="exp-title font-serif">Private Vineyard Vault Access</h3>
+              <p class="exp-desc">Private tastings with estate curators in closed cellars of Bordeaux and Tuscany, accompanied by secure transport.</p>
+            </div>
+          </div>
+          <!-- Exp 2 -->
+          <div class="exp-card">
+            <div class="exp-img-wrapper">
+              <img src="v12.jpg" class="exp-img" alt="Heliskiing">
+            </div>
+            <div class="exp-body">
+              <span class="exp-tag">Aviation</span>
+              <h3 class="exp-title font-serif">Helicopter Skiing Safaris</h3>
+              <p class="exp-desc">Fly directly from your chalet roof to unmapped peaks in Aspen, guided by expert mountain safety teams.</p>
+            </div>
+          </div>
+          <!-- Exp 3 -->
+          <div class="exp-card">
+            <div class="exp-img-wrapper">
+              <img src="v13.jpg" class="exp-img" alt="Yacht lunch">
+            </div>
+            <div class="exp-body">
+              <span class="exp-tag">Marine</span>
+              <h3 class="exp-title font-serif">Superyacht Beach Curation</h3>
+              <p class="exp-desc">Charter flights connect guests to secluded sandbanks in the Maldives for chef-prepared banquets.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Owner Management Value Proposition -->
+      <section class="section-spacing container" id="h2-mgmt-sec">
+        <div class="grid-2">
+          <div>
+            <span class="subtitle">Property Owners</span>
+            <h2 class="title" style="margin-top: 10px;">Yield Optimization & Asset Custody</h2>
+            <p class="desc" style="margin-bottom: 30px;">Managing premium real estate demands rigorous compliance, security reviews, and occupancy intelligence. We offer complete property automation with zero friction.</p>
+            <div class="prop-list">
+              <div class="prop-item">
+                <div class="prop-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div>
+                  <h3 class="prop-title font-serif">Dynamic Yield Algorythms</h3>
+                  <p class="prop-desc">We adapt pricing structures based on live global demand parameters, maximizing off-season returns.</p>
+                </div>
+              </div>
+              <div class="prop-item">
+                <div class="prop-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <div>
+                  <h3 class="prop-title font-serif">Escrow Income Processing</h3>
+                  <p class="prop-desc">Ultra-secure booking pipelines guarantee payments are cleared and deposited inside private accounts in 48 hours.</p>
+                </div>
+              </div>
+              <div class="prop-item">
+                <div class="prop-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                <div>
+                  <h3 class="prop-title font-serif">Automated Maintenance Audits</h3>
+                  <p class="prop-desc">HVAC systems, pool filtration, and helipad standards are checked dynamically weekly.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="v15.jpg" alt="Villa exterior" style="border: 1px solid var(--border-color); box-shadow: var(--shadow-lg); height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Guest Testimonials Carousel -->
+      <section class="section-spacing container" id="h2-testimonials-sec">
+        <div class="testimonial-carousel glass-panel">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="testimonial-text">
+            "Aura Elite transformed our properties from static maintenance cost nodes into high-yield, fully automated hospitality assets. Their scheduling is military grade."
+          </div>
+          <div class="testimonial-author">Sir Alexander Sterling</div>
+          <div class="testimonial-author-title">Owner, Villa Aurora (Monaco)</div>
+        </div>
+      </section>
+
+      <!-- Section 6: Spatial Tour Experience (Redesigned) -->
+      <div class="container">
+        <section class="section-spacing" id="h2-tour-sec">
+          <div class="tour-layout-wrapper">
+            <div class="tour-media-box">
+              <div class="tour-container" style="background-image: url('v14.jpg'); height: 350px;">
+                <div class="tour-overlay"></div>
+                <button class="tour-btn" onclick="alert('Launching secure 3D spatial tour...')">
+                  <i class="fa-solid fa-play"></i>
+                  <div class="tour-pulse"></div>
+                </button>
+              </div>
+            </div>
+            <div class="tour-details-box glass-panel">
+              <h3 class="font-serif tour-details-title">Villa Celeste Inspection</h3>
+              <p class="tour-details-desc">Walk through our coastal cliffs estate in Monaco. The spatial model renders structural specs, secure access pathways, and automated housekeeping systems in high definition.</p>
+              <ul class="tour-specs-list">
+                <li><i class="fa-solid fa-microchip"></i> <strong>Lidar Precision:</strong> 0.2mm scan margin</li>
+                <li><i class="fa-solid fa-user-shield"></i> <strong>NDA Custody:</strong> Verification token active</li>
+                <li><i class="fa-solid fa-compass"></i> <strong>Views Rendered:</strong> Yacht mooring & helipads</li>
+              </ul>
+              <div class="tour-action-bar">
+                <button class="btn btn-primary login-trigger">Request Access Token</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         ABOUT PAGE VIEW
+         ---------------------------------------------------------------------- -->
+    <div id="about-view" class="spa-view">
+      <!-- Hero Section -->
+      <section class="hero-sub" style="background-image: url('villa2.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-sub-content">
+          <h1 class="hero-sub-title font-serif">Our Heritage</h1>
+          <p class="hero-sub-desc">Over a decade of curating discrete havens and high-yield property assets globally.</p>
+        </div>
+      </section>
+
+      <section class="section-spacing container" id="about-heritage">
+        <div class="about-heritage-grid">
+          <div>
+            <span class="subtitle">Our Foundation</span>
+            <h2 class="title">Curating Discrete Havens Since 2012</h2>
+            <div class="heritage-story">
+              <p>Aura Elite was born out of a simple need: to provide ultra-high-net-worth real estate owners with a property management network that operates with absolute discretion, financial accuracy, and curated concierge care.</p>
+              <p>From a single estate in Monaco, we have systematically expanded our operations to cover 14 global hubs. Today, our network handles over $2.4 Billion in premium residential assets with integrated routing systems.</p>
+            </div>
+          </div>
+          <div>
+            <img src="v10.jpg" alt="Estate Interior" style="border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
+          </div>
+        </div>
+      </section>
+
+      <!-- Pillars Section -->
+      <section class="section-spacing container" id="about-pillars">
+        <div class="section-header center">
+          <span class="subtitle">Core Values</span>
+          <h2 class="title">Our Operational Pillars</h2>
+          <p class="desc">Every team member operates strictly under our core values of privacy, custody, and excellence.</p>
+        </div>
+        <div class="grid-3">
+          <div class="pillar-card">
+            <span class="pillar-num">01</span>
+            <h3 class="pillar-title font-serif">Absolute Discretion</h3>
+            <p class="pillar-desc">All reservation sheets, owner payouts, and flight itineraries are encrypted and accessed strictly on a need-to-know basis.</p>
+          </div>
+          <div class="pillar-card">
+            <span class="pillar-num">02</span>
+            <h3 class="pillar-title font-serif">Rigor Custody</h3>
+            <p class="pillar-desc">Property care rosters cover engineering, asset auditing, security verification, and concierge dispatch weekly.</p>
+          </div>
+          <div class="pillar-card">
+            <span class="pillar-num">03</span>
+            <h3 class="pillar-title font-serif">Seamless Mobility</h3>
+            <p class="pillar-desc">Integrating villa access with private aviation logs ensures guests arrive to a fully heated, stocked home.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Team Gallery -->
+      <section class="section-spacing container" id="about-team">
+        <div class="section-header">
+          <span class="subtitle">Leadership</span>
+          <h2 class="title">Elite Network Curators</h2>
+          <p class="desc">A collection of industry professionals managing global hospitality networks and security details.</p>
+        </div>
+        <div class="grid-4">
+          <!-- Staff 1 -->
+          <div class="team-card">
+            <div class="team-img-box">
+              <img src="a1.webp" class="team-img" alt="CEO">
+            </div>
+            <div class="team-details">
+              <h3 class="team-name font-serif">Marcus Vane</h3>
+              <span class="team-role">Managing Director</span>
+              <div class="team-socials">
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Staff 2 -->
+          <div class="team-card">
+            <div class="team-img-box">
+              <img src="male1.avif" class="team-img" alt="Head of Guest Relations">
+            </div>
+            <div class="team-details">
+              <h3 class="team-name font-serif">Lady Genevieve</h3>
+              <span class="team-role">Head of Guest Relations</span>
+              <div class="team-socials">
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Staff 3 -->
+          <div class="team-card">
+            <div class="team-img-box">
+              <img src="male2.avif" class="team-img" alt="Head of Security">
+            </div>
+            <div class="team-details">
+              <h3 class="team-name font-serif">Col. David Ross</h3>
+              <span class="team-role">Director of Global Security</span>
+              <div class="team-socials">
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- Staff 4 -->
+          <div class="team-card">
+            <div class="team-img-box">
+              <img src="f1.avif" class="team-img" alt="CFO">
+            </div>
+            <div class="team-details">
+              <h3 class="team-name font-serif">Charlotte Dubois</h3>
+              <span class="team-role">Chief Financial Officer</span>
+              <div class="team-socials">
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Global Hubs Map (Redesigned) -->
+      <section class="section-spacing container" id="about-footprint">
+        <div class="section-header center">
+          <span class="subtitle">Footprint</span>
+          <h2 class="title">Our Hubs Infrastructure</h2>
+          <p class="desc">A global network of logistics hubs coordinates concierge and aviation routing details instantly.</p>
+        </div>
+        <div class="hubs-grid">
+          <!-- Hub 1: Monaco -->
+          <div class="hub-card glass-panel">
+            <div class="hub-header">
+              <span class="hub-location font-serif">Monaco Secretariat</span>
+              <span class="hub-status"><i class="fa-solid fa-circle"></i> Active</span>
+            </div>
+            <p class="hub-desc">Central network communications hub directing superyacht checkins and close protection routing.</p>
+            <div class="hub-footer">
+              <span>Port de Monaco</span>
+              <span class="hub-code">MON-HQ-01</span>
+            </div>
+          </div>
+          <!-- Hub 2: London -->
+          <div class="hub-card glass-panel">
+            <div class="hub-header">
+              <span class="hub-location font-serif">London Mayfair</span>
+              <span class="hub-status"><i class="fa-solid fa-circle"></i> Active</span>
+            </div>
+            <p class="hub-desc">Private aviation manifesting and financial ledger oversight for sovereign property managers.</p>
+            <div class="hub-footer">
+              <span>Mayfair Square</span>
+              <span class="hub-code">LDN-HQ-02</span>
+            </div>
+          </div>
+          <!-- Hub 3: Dubai -->
+          <div class="hub-card glass-panel">
+            <div class="hub-header">
+              <span class="hub-location font-serif">Dubai DIFC</span>
+              <span class="hub-status"><i class="fa-solid fa-circle"></i> Active</span>
+            </div>
+            <p class="hub-desc">Gulf cooperation coordination, deep-sea charters, and private helicopter landing operations.</p>
+            <div class="hub-footer">
+              <span>DIFC Gate Village</span>
+              <span class="hub-code">DXB-HQ-03</span>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 45px;">
+          <button class="btn btn-secondary" data-route="contact-view">Inquire Local Secretariat Liaison</button>
+        </div>
+      </section>
+
+      <!-- Timeline Section -->
+      <section class="section-spacing container" id="about-timeline">
+        <div class="section-header center">
+          <span class="subtitle">Milestones</span>
+          <h2 class="title">Our Chronological Path</h2>
+          <p class="desc">Over a decade of refining automated luxury residential asset algorithms.</p>
+        </div>
+        <div class="timeline-container">
+          <!-- Node 1 -->
+          <div class="timeline-item">
+            <div class="timeline-node"></div>
+            <div class="timeline-year">2012</div>
+            <div class="timeline-content-card">
+              <h4 class="font-serif" style="font-size: 1.25rem;">Monaco Foundation</h4>
+              <p class="text-secondary" style="font-size: 0.9rem;">Launched with 3 pilot estate properties, testing close protection and aviation sync.</p>
+            </div>
+          </div>
+          <!-- Node 2 -->
+          <div class="timeline-item">
+            <div class="timeline-node"></div>
+            <div class="timeline-year">2016</div>
+            <div class="timeline-content-card">
+              <h4 class="font-serif" style="font-size: 1.25rem;">US & Alps Expansion</h4>
+              <p class="text-secondary" style="font-size: 0.9rem;">Opened offices in New York and Aspen, integrating winter yacht management rosters.</p>
+            </div>
+          </div>
+          <!-- Node 3 -->
+          <div class="timeline-item">
+            <div class="timeline-node"></div>
+            <div class="timeline-year">2021</div>
+            <div class="timeline-content-card">
+              <h4 class="font-serif" style="font-size: 1.25rem;">Owner Automation Portal</h4>
+              <p class="text-secondary" style="font-size: 0.9rem;">Released the secure dashboard system managing payouts, tax logs, and HVAC weekly audits.</p>
+            </div>
+          </div>
+          <!-- Node 4 -->
+          <div class="timeline-item">
+            <div class="timeline-node"></div>
+            <div class="timeline-year">2026</div>
+            <div class="timeline-content-card">
+              <h4 class="font-serif" style="font-size: 1.25rem;">Global Elite Release</h4>
+              <p class="text-secondary" style="font-size: 0.9rem;">Integrated blockchain-grade consultation portals and dynamic yield automation models.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Partnerships -->
+      <section class="section-spacing container" id="about-partners">
+        <div class="section-header center">
+          <span class="subtitle">Partners</span>
+          <h2 class="title">Luxury Affiliations</h2>
+          <p class="desc">A shared standard of service with world-leading luxury manufacturers and aviation alliances.</p>
+        </div>
+        <div class="press-grid">
+          <span class="press-logo">Gulfstream</span>
+          <span class="press-logo">Lürssen Yachts</span>
+          <span class="press-logo">Baccarat</span>
+          <span class="press-logo">Dom Pérignon</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         SERVICES VIEW
+         ---------------------------------------------------------------------- -->
+    <div id="services-view" class="spa-view">
+      <!-- Hero Section -->
+      <section class="hero-sub" style="background-image: url('v15.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-sub-content">
+          <h1 class="hero-sub-title font-serif">Network Services</h1>
+          <p class="hero-sub-desc">Multi-tiered operations covering private transits, culinary custody, and security details.</p>
+        </div>
+      </section>
+
+      <section class="section-spacing container" id="services-grid-list">
+        <div class="section-header center">
+          <span class="subtitle">Portfolio of Care</span>
+          <h2 class="title">Elite Concierge & Property Services</h2>
+          <p class="desc">A structured operational layout covering private transits, culinary custody, and engineering details.</p>
+        </div>
+
+        <!-- Row 1: Aviation -->
+        <div class="service-split-row">
+          <div class="service-split-img-box">
+            <img src="v11.jpg" alt="Aviation">
+          </div>
+          <div class="service-split-text">
+            <span class="service-index">01 / Transportation</span>
+            <h3 class="service-title font-serif">Aviation & Marine Charters</h3>
+            <p class="service-desc">We control dry-dock yacht lists and private flight plans directly. Our system synchronizes luxury airport transfers with yacht checkins in 5 minutes.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> 24h Flight Deck Manifest Scheduling</li>
+              <li><i class="fa-solid fa-circle-check"></i> Superyacht Charter & Port Mooring Clearance</li>
+              <li><i class="fa-solid fa-circle-check"></i> Helipad maintenance compliance audits</li>
+            </ul>
+            <button class="btn btn-secondary login-trigger">Inquire Charter</button>
+          </div>
+        </div>
+
+        <!-- Row 2: Gastronomy -->
+        <div class="service-split-row">
+          <div class="service-split-img-box">
+            <img src="v12.jpg" alt="Michelin Culinary">
+          </div>
+          <div class="service-split-text">
+            <span class="service-index">02 / Gastronomy</span>
+            <h3 class="service-title font-serif">Michelin-Starred In-Villa Dining</h3>
+            <p class="service-desc">Our chefs are sourced directly from Michelin-starred establishments. We handle complete provisioning rosters, custom cellar collection purchases, and nutritional menu styling.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> Private Sommelier Cellar Vault Audits</li>
+              <li><i class="fa-solid fa-circle-check"></i> Provisioning logs aligned with dietary protocols</li>
+              <li><i class="fa-solid fa-circle-check"></i> Custom banqueting and yacht catering</li>
+            </ul>
+            <button class="btn btn-secondary login-trigger">Inquire Culinary</button>
+          </div>
+        </div>
+
+        <!-- Row 3: Wellness -->
+        <div class="service-split-row">
+          <div class="service-split-img-box">
+            <img src="v13.jpg" alt="Wellness">
+          </div>
+          <div class="service-split-text">
+            <span class="service-index">03 / Rejuvenation</span>
+            <h3 class="service-title font-serif">Spa Therapy & Integrative Wellness</h3>
+            <p class="service-desc">Private wellness spaces require expert therapy programs. We dispatch massage therapists, yoga mentors, and wellness coaches directly to your private villa decks.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> Custom steam/sauna calibration and servicing</li>
+              <li><i class="fa-solid fa-circle-check"></i> Private yoga & pilates session bookings</li>
+              <li><i class="fa-solid fa-circle-check"></i> Sourcing of high-grade organic treatments</li>
+            </ul>
+            <button class="btn btn-secondary login-trigger">Inquire Wellness</button>
+          </div>
+        </div>
+
+        <!-- Row 4: Maintenance -->
+        <div class="service-split-row">
+          <div class="service-split-img-box">
+            <img src="v1.jpg" alt="Estate Maintenance">
+          </div>
+          <div class="service-split-text">
+            <span class="service-index">04 / Property Care</span>
+            <h3 class="service-title font-serif">Elite Estate Maintenance</h3>
+            <p class="service-desc">Villa structural custody is our highest priority. We manage deep-clean schedules, pool water chemistry reports, smart home controls, and backup generator logs.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> Automated weekly HVAC and filter purifications</li>
+              <li><i class="fa-solid fa-circle-check"></i> Infinity pool filtration and chemical audits</li>
+              <li><i class="fa-solid fa-circle-check"></i> High-security landscaping and perimeter care</li>
+            </ul>
+            <button class="btn btn-secondary login-trigger">Review Maintenance Plans</button>
+          </div>
+        </div>
+
+        <!-- Row 5: Security -->
+        <div class="service-split-row">
+          <div class="service-split-img-box">
+            <img src="v2.jpg" alt="Security Logistics">
+          </div>
+          <div class="service-split-text">
+            <span class="service-index">05 / Protection</span>
+            <h3 class="service-title font-serif">Discrete Close Protection</h3>
+            <p class="service-desc">Operating in high-visibility zones requires quiet protection plans. We recruit security professionals from elite military backgrounds, managing armored land transits.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> Armored vehicle routing with VIP clearances</li>
+              <li><i class="fa-solid fa-circle-check"></i> High-fidelity secure communication networks</li>
+              <li><i class="fa-solid fa-circle-check"></i> Threat monitoring and villa emergency panic setups</li>
+            </ul>
+            <button class="btn btn-secondary login-trigger">Request Security Audit</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         CONTACT VIEW
+         ---------------------------------------------------------------------- -->
+    <div id="contact-view" class="spa-view">
+      <!-- Hero Section -->
+      <section class="hero-sub" style="background-image: url('villa3.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-sub-content">
+          <h1 class="hero-sub-title font-serif">Secretariat Contact</h1>
+          <p class="hero-sub-desc">Secure encrypted pipelines for booking requests and discrete consultation planning.</p>
+        </div>
+      </section>
+
+      <section class="section-spacing container" id="contact-main">
+        <div class="section-header center">
+          <span class="subtitle">Secure Inquiries</span>
+          <h2 class="title">Schedule a Private Consultation</h2>
+          <p class="desc">Our private secretaries maintain absolute discretion. Leave your coordinates or schedule a direct callback time.</p>
+        </div>
+        
+        <div class="contact-grid">
+          <!-- Left side: Consultation Form -->
+          <div class="secure-form-panel glass-panel">
+            <h3 class="font-serif" style="font-size: 1.8rem; margin-bottom: 24px;"><i class="fa-solid fa-lock" style="color: var(--color-accent);"></i> Secure Encrypted Form</h3>
+            <form id="secure-consultation-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">Full Name</label>
+                  <input type="text" id="contact-name" class="form-control" placeholder="Lord Sterling" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email">Encrypted Email</label>
+                  <input type="email" id="contact-email" class="form-control" placeholder="sterling@secure.com" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-phone">Signal/WhatsApp Number</label>
+                  <input type="tel" id="contact-phone" class="form-control" placeholder="+44 7700 900077" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-service">Preferred Service</label>
+                  <select id="contact-service" class="form-control">
+                    <option value="villa-mgmt">Villa Management Onboarding</option>
+                    <option value="yacht-charter">Superyacht / Aviation Charter</option>
+                    <option value="close-protection">Discrete Close Protection</option>
+                    <option value="lifestyle-concierge">Global Concierge Membership</option>
+                  </select>
+                </div>
+              </div>
+              
+              <!-- Interactive Scheduler widget -->
+              <div class="form-group full-width">
+                <label class="form-label">Select Consultation Date & Time</label>
+                <div class="scheduler-widget">
+                  <span class="font-serif" style="font-size: 0.95rem; color: var(--color-accent); font-weight: 600;">October 2026</span>
+                  <div class="scheduler-calendar">
+                    <div class="sched-day disabled">19</div>
+                    <div class="sched-day disabled">20</div>
+                    <div class="sched-day" data-date="2026-10-21">21</div>
+                    <div class="sched-day" data-date="2026-10-22">22</div>
+                    <div class="sched-day" data-date="2026-10-23">23</div>
+                    <div class="sched-day disabled">24</div>
+                    <div class="sched-day disabled">25</div>
+                  </div>
+                  <div class="time-slots">
+                    <div class="time-slot" data-time="09:00 AM">09:00 AM</div>
+                    <div class="time-slot" data-time="02:00 PM">02:00 PM</div>
+                    <div class="time-slot" data-time="06:00 PM">06:00 PM</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group full-width" style="margin-top: 24px;">
+                <label class="form-label" for="contact-notes">Special Security/Provisioning Protocols</label>
+                <textarea id="contact-notes" class="form-control" placeholder="Specify any NDA requirements, signal contact protocols, or catering constraints..."></textarea>
+              </div>
+
+              <div style="margin-top: 30px; text-align: center;">
+                <button type="submit" class="btn btn-primary">Schedule Appointment</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right side: office contacts & FAQ -->
+          <div class="contact-sidebar">
+            <div class="office-card">
+              <h3 class="office-title font-serif">Monaco Secretariat</h3>
+              <ul class="office-details-list">
+                <li><i class="fa-solid fa-location-dot"></i> 14 Boulevard Albert 1er, Monaco</li>
+                <li><i class="fa-solid fa-phone"></i> +377 97 97 00 11</li>
+                <li><i class="fa-solid fa-envelope"></i> monaco@auraelite.net</li>
+              </ul>
+            </div>
+            
+            <div class="office-card">
+              <h3 class="office-title font-serif">London Secretariat</h3>
+              <ul class="office-details-list">
+                <li><i class="fa-solid fa-location-dot"></i> Mayfair Place, London W1J</li>
+                <li><i class="fa-solid fa-phone"></i> +44 20 7946 0912</li>
+                <li><i class="fa-solid fa-envelope"></i> london@auraelite.net</li>
+              </ul>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div>
+              <h3 class="font-serif" style="font-size: 1.5rem; margin-bottom: 20px;">FAQ</h3>
+              <div class="faq-accordion">
+                <div class="faq-item">
+                  <div class="faq-question">How are client logs handled? <i class="fa-solid fa-chevron-down"></i></div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                      All reservation manifests, yacht lists, and secure forms are deleted from public servers upon client checking and archived inside isolated databases.
+                    </div>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <div class="faq-question">What is the onboarding process? <i class="fa-solid fa-chevron-down"></i></div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                      New villas undergo a structural engineering inspection, security sweep, and high-fidelity photography styling before listing.
+                    </div>
+                  </div>
+                </div>
+                <div class="faq-item">
+                  <div class="faq-question">How is LTR/RTL applied? <i class="fa-solid fa-chevron-down"></i></div>
+                  <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                      Our platform supports full text direction scaling instantly. Toggle LTR/RTL in the top menu to shift typography orientations.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Secretariat Priority Contacts -->
+      <section class="section-spacing container" id="contact-hotlines">
+        <div class="section-header center">
+          <span class="subtitle">Global Hotlines</span>
+          <h2 class="title">Secure Secretariat Liaisons</h2>
+          <p class="desc">Verified network members receive direct priority lines. All calls are routed through encrypted satellite uplinks.</p>
+        </div>
+        <div class="grid-3">
+          <!-- Office Monaco -->
+          <div class="office-card glass-panel" style="padding: 40px; border: 1px solid var(--border-color);">
+            <h3 class="font-serif" style="font-size: 1.4rem; color: var(--color-accent); margin-bottom: 15px;">Monaco Port HQ</h3>
+            <p class="text-secondary" style="font-size: 0.9rem; margin-bottom: 20px;">Direct maritime support, deep-water mooring coordination, and Mediterranean logistics.</p>
+            <ul class="office-details-list">
+              <li><i class="fa-solid fa-phone"></i> +377 97 97 00 11</li>
+              <li><i class="fa-solid fa-envelope"></i> monaco@auraelite.net</li>
+            </ul>
+          </div>
+          <!-- Office London -->
+          <div class="office-card glass-panel" style="padding: 40px; border: 1px solid var(--border-color);">
+            <h3 class="font-serif" style="font-size: 1.4rem; color: var(--color-accent); margin-bottom: 15px;">London Mayfair Office</h3>
+            <p class="text-secondary" style="font-size: 0.9rem; margin-bottom: 20px;">Curating sovereign flight manifests, legal NDAs, and international banking ledger audits.</p>
+            <ul class="office-details-list">
+              <li><i class="fa-solid fa-phone"></i> +44 20 7946 0912</li>
+              <li><i class="fa-solid fa-envelope"></i> london@auraelite.net</li>
+            </ul>
+          </div>
+          <!-- Office Aspen -->
+          <div class="office-card glass-panel" style="padding: 40px; border: 1px solid var(--border-color);">
+            <h3 class="font-serif" style="font-size: 1.4rem; color: var(--color-accent); margin-bottom: 15px;">Aspen Alpine Secretariat</h3>
+            <p class="text-secondary" style="font-size: 0.9rem; margin-bottom: 20px;">Specialized heli-ski support, chalet HVAC integrations, and alpine close protection details.</p>
+            <ul class="office-details-list">
+              <li><i class="fa-solid fa-phone"></i> +1 970 544 0022</li>
+              <li><i class="fa-solid fa-envelope"></i> aspen@auraelite.net</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Secure Verification Process -->
+      <section class="section-spacing container" id="contact-security-protocols">
+        <div class="section-header center">
+          <span class="subtitle">Onboarding Security</span>
+          <h2 class="title">Secure Pipeline Protocol</h2>
+          <p class="desc">A strict 3-tier vetting cycle ensures absolute privacy and asset safety for all network owners.</p>
+        </div>
+        <div class="grid-3" style="margin-top: 40px;">
+          <div class="pillar-card">
+            <span class="pillar-num" style="opacity: 0.1;">I</span>
+            <h3 class="pillar-title font-serif">Cryptographic Key Signoff</h3>
+            <p class="pillar-desc">Upon form validation, our secretariat issues a physical hardware verification key for portal login access.</p>
+          </div>
+          <div class="pillar-card">
+            <span class="pillar-num" style="opacity: 0.1;">II</span>
+            <h3 class="pillar-title font-serif">NDA Verification</h3>
+            <p class="pillar-desc">Both parties execute mutual non-disclosure covenants covering asset locations, yield percentages, and occupancy plans.</p>
+          </div>
+          <div class="pillar-card">
+            <span class="pillar-num" style="opacity: 0.1;">III</span>
+            <h3 class="pillar-title font-serif">Liaison Activation</h3>
+            <p class="pillar-desc">A dedicated liaison officer is assigned to handle custom catering, yacht berths, and flight plans 24/7.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Secure Callback Disclosures -->
+      <section class="section-spacing container" id="contact-disclosures">
+        <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 60px; text-align: center;">
+          <i class="fa-solid fa-shield-halved" style="font-size: 4rem; color: var(--color-accent); margin-bottom: 20px; display: block;"></i>
+          <h3 class="font-serif" style="font-size: 2.2rem; margin-bottom: 15px;">Encrypted Privacy Protection</h3>
+          <p class="text-secondary" style="max-width: 650px; margin: 0 auto 30px; line-height: 1.7;">All information submitted through this network is automatically scrubbed from transient logs and saved directly into private database ledgers. Our staff operates under international banking discretion frameworks.</p>
+          <button class="btn btn-primary login-trigger">Consultation NDA Agreement</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         LOGIN VIEW - Full Screen Auth
+         ---------------------------------------------------------------------- -->
+    <div id="login-view" class="spa-view auth-layout">
+      <!-- Floating Top Corner Toggles -->
+      <div class="auth-toggles">
+        <button class="toggle-btn theme-toggle"><i class="fa-solid fa-moon"></i></button>
+        <button class="toggle-btn rtl-toggle lang-toggle">RTL</button>
+      </div>
+
+      <div class="auth-container">
+        <div class="auth-card glass-panel fade-in">
+          <!-- Logo Header -->
+          <div class="auth-logo">
+            <a href="#" class="logo-link" data-route="home1-view">
+              <span class="logo-icon">Æ</span>
+              <div style="display: flex; flex-direction: column; line-height: 1;">
+                <span class="logo-text font-serif">AURA</span>
+                <span class="logo-tagline">Elite Network</span>
+              </div>
+            </a>
+          </div>
+          
+          <h2 class="auth-title font-serif">Sign In</h2>
+          <p class="auth-subtitle">Verify cryptographic key details for network clearance.</p>
+
+          <form id="login-form-new" class="auth-form">
+            <div class="form-group">
+              <label class="form-label" for="login-username-new">Secretariat Account / Email</label>
+              <input type="text" id="login-username-new" class="form-control" required placeholder="name@auraelite.net">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="login-password-new">Passcode Pin</label>
+              <input type="password" id="login-password-new" class="form-control" required placeholder="••••••••">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="login-role-new">Access Clearance Level</label>
+              <select id="login-role-new" class="form-control">
+                <option value="user">Premium Owner Ledger</option>
+                <option value="admin">Elite Manager Secretariat</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" style="margin-top: 10px;">Authorize Login</button>
+          </form>
+
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+
+          <div class="auth-social-buttons">
+            <button class="btn btn-secondary social-btn" onclick="alert('Google Auth session initializing...')">
+              <i class="fa-brands fa-google"></i> Google
+            </button>
+            <button class="btn btn-secondary social-btn" onclick="alert('Facebook Auth session initializing...')">
+              <i class="fa-brands fa-facebook-f"></i> Facebook
+            </button>
+          </div>
+
+          <div class="auth-footer-link">
+            <span>Don't have an account? </span>
+            <a href="#" data-route="register-view">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         REGISTER VIEW - Full Screen Auth
+         ---------------------------------------------------------------------- -->
+    <div id="register-view" class="spa-view auth-layout">
+      <!-- Floating Top Corner Toggles -->
+      <div class="auth-toggles">
+        <button class="toggle-btn theme-toggle"><i class="fa-solid fa-moon"></i></button>
+        <button class="toggle-btn rtl-toggle lang-toggle">RTL</button>
+      </div>
+
+      <div class="auth-container">
+        <div class="auth-card glass-panel fade-in">
+          <!-- Logo Header -->
+          <div class="auth-logo">
+            <a href="#" class="logo-link" data-route="home1-view">
+              <span class="logo-icon">Æ</span>
+              <div style="display: flex; flex-direction: column; line-height: 1;">
+                <span class="logo-text font-serif">AURA</span>
+                <span class="logo-tagline">Elite Network</span>
+              </div>
+            </a>
+          </div>
+          
+          <h2 class="auth-title font-serif">Sign Up</h2>
+          <p class="auth-subtitle">Register property portfolio for off-market administration.</p>
+
+          <form id="register-form-new" class="auth-form">
+            <div class="form-group">
+              <label class="form-label" for="reg-name">Legal Full Name</label>
+              <input type="text" id="reg-name" class="form-control" required placeholder="Lord Mountbatten">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-email">Secretariat Account / Email</label>
+              <input type="email" id="reg-email" class="form-control" required placeholder="name@auraelite.net">
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="reg-password">Passcode Pin</label>
+              <input type="password" id="reg-password" class="form-control" required placeholder="••••••••">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reg-role">Requested Clearance Level</label>
+              <select id="reg-role" class="form-control">
+                <option value="user">Premium Owner Ledger</option>
+                <option value="admin">Elite Manager Secretariat</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" style="margin-top: 10px;">Request Registration</button>
+          </form>
+
+          <div class="auth-divider">
+            <span>or continue with</span>
+          </div>
+
+          <div class="auth-social-buttons">
+            <button class="btn btn-secondary social-btn" onclick="alert('Google Auth session initializing...')">
+              <i class="fa-brands fa-google"></i> Google
+            </button>
+            <button class="btn btn-secondary social-btn" onclick="alert('Facebook Auth session initializing...')">
+              <i class="fa-brands fa-facebook-f"></i> Facebook
+            </button>
+          </div>
+
+          <div class="auth-footer-link">
+            <span>Already have an account? </span>
+            <a href="#" data-route="login-view">Log In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         USER PORTAL (Villa Owners) - NO Main Header / Footer
+         ---------------------------------------------------------------------- -->
+    <div id="user-dashboard-view" class="spa-view dashboard-layout">
+      <!-- Fixed Sidebar -->
+      <aside class="dash-sidebar">
+        <div class="dash-sidebar-logo">
+          <a href="#" class="logo-link" data-route="home1-view">
+            <span class="logo-icon">Æ</span>
+            <div style="display: flex; flex-direction: column; line-height: 1;">
+              <span class="logo-text font-serif">AURA</span>
+              <span class="logo-tagline">Elite Network</span>
+            </div>
+          </a>
+        </div>
+        <ul class="dash-sidebar-menu">
+          <li class="dash-menu-item active" data-dash-tab="overview">
+            <a href="#"><i class="fa-solid fa-house"></i> Overview</a>
+          </li>
+          <li class="dash-menu-item" data-dash-tab="income">
+            <a href="#"><i class="fa-solid fa-file-invoice-dollar"></i> Rental Income</a>
+          </li>
+          <li class="dash-menu-item" data-dash-tab="occupancy">
+            <a href="#"><i class="fa-regular fa-calendar-days"></i> Occupancy Calendar</a>
+          </li>
+          <li class="dash-menu-item" data-dash-tab="maintenance">
+            <a href="#"><i class="fa-solid fa-screwdriver-wrench"></i> Maintenance Logs</a>
+          </li>
+          <li class="dash-menu-item" data-dash-tab="housekeeping">
+            <a href="#"><i class="fa-solid fa-broom"></i> Housekeeping</a>
+          </li>
+        </ul>
+        <div class="dash-sidebar-footer">
+          <a href="#" class="logout-trigger" style="color: #E54B4B; display: flex; align-items: center; gap: 10px; font-weight: 600;">
+            <i class="fa-solid fa-power-off"></i> Logout
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <div class="dash-main-area">
+        <!-- Top Bar inside Dashboard -->
+        <div class="dash-topbar">
+          <div class="dash-topbar-left">
+            <button class="toggle-btn dash-sidebar-toggle-btn" title="Toggle Sidebar">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+          <div class="dash-topbar-actions">
+            <button class="toggle-btn theme-toggle"><i class="fa-solid fa-moon"></i></button>
+            <button class="toggle-btn rtl-toggle lang-toggle">RTL</button>
+          </div>
+        </div>
+
+        <!-- TAB: Overview -->
+        <div class="dash-tab-pane active" id="user-dash-overview">
+          <!-- Metrics Row -->
+          <div class="metrics-row">
+            <div class="metric-card">
+              <div class="metric-main-info">
+                <span class="metric-title">Total Revenue YTD</span>
+                <span class="metric-val">$584,200</span>
+                <span class="metric-trend up"><i class="fa-solid fa-caret-up"></i> +12% vs last year</span>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-wallet"></i></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-main-info">
+                <span class="metric-title">Average Occupancy</span>
+                <span class="metric-val">84.2%</span>
+                <span class="metric-trend up"><i class="fa-solid fa-caret-up"></i> +4.5% vs average</span>
+              </div>
+              <div class="metric-icon-box"><i class="fa-regular fa-calendar-check"></i></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-main-info">
+                <span class="metric-title">Active Tickets</span>
+                <span class="metric-val">1 Ticket</span>
+                <span class="metric-trend down"><i class="fa-solid fa-caret-down"></i> Resolved pool filter</span>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-main-info">
+                <span class="metric-title">Housekeeping Status</span>
+                <span class="metric-val">Completed</span>
+                <span class="metric-trend up"><i class="fa-solid fa-check"></i> Roster synchronized</span>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-broom"></i></div>
+            </div>
+          </div>
+
+          <!-- Charts -->
+          <div class="charts-grid-row">
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="chart-card-title font-serif">Villa Income Statements</h3>
+                <span class="text-muted" style="font-size: 0.8rem;">Monthly billing ledger</span>
+              </div>
+              <div class="chart-canvas-container">
+                <canvas id="user-income-canvas"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="chart-card-title font-serif">Occupancy by Property</h3>
+                <span class="text-muted" style="font-size: 0.8rem;">Live occupancy %</span>
+              </div>
+              <div class="chart-canvas-container">
+                <canvas id="user-occupancy-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Rental Income -->
+        <div class="dash-tab-pane" id="user-dash-income">
+          <div class="table-card">
+            <div class="chart-card-header">
+              <h3 class="chart-card-title font-serif">Monthly Income Statements</h3>
+              <button class="btn btn-secondary" onclick="alert('Downloading Statement PDF...')">Download Ledger PDF</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Payout Period</th>
+                    <th>Villa Name</th>
+                    <th>Booked Nights</th>
+                    <th>Gross Income</th>
+                    <th>Commission Fee (15%)</th>
+                    <th>Net Payout</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>May 2026</strong></td>
+                    <td>Villa Aurora</td>
+                    <td>22 Nights</td>
+                    <td>$407,000</td>
+                    <td>$61,050</td>
+                    <td><strong>$345,950</strong></td>
+                    <td><span class="status-pill success">Settled</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>April 2026</strong></td>
+                    <td>Villa Aurora</td>
+                    <td>18 Nights</td>
+                    <td>$333,000</td>
+                    <td>$49,950</td>
+                    <td><strong>$283,050</strong></td>
+                    <td><span class="status-pill success">Settled</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>March 2026</strong></td>
+                    <td>Villa Aurora</td>
+                    <td>14 Nights</td>
+                    <td>$259,000</td>
+                    <td>$38,850</td>
+                    <td><strong>$220,150</strong></td>
+                    <td><span class="status-pill success">Settled</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Occupancy Calendar -->
+        <div class="dash-tab-pane" id="user-dash-occupancy">
+          <div class="dash-calendar-container">
+            <div class="dash-cal-header-row">
+              <h3 class="font-serif" style="font-size: 1.5rem;">Interactive Occupancy Calendar</h3>
+              <div style="display: flex; gap: 16px; font-size: 0.8rem;">
+                <span><i class="fa-solid fa-square" style="color: rgba(184, 144, 71, 0.2);"></i> Owner Reservation</span>
+                <span><i class="fa-solid fa-square" style="color: rgba(43, 108, 176, 0.2);"></i> Guest Booking</span>
+                <span><i class="fa-solid fa-square" style="color: rgba(229, 75, 75, 0.2);"></i> Maintenance Block</span>
+              </div>
+            </div>
+            <div id="user-dash-calendar">
+              <!-- Grid generated via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Maintenance Logs -->
+        <div class="dash-tab-pane" id="user-dash-maintenance">
+          <!-- Ticket Creation Form -->
+          <div class="interactive-add-panel">
+            <h3 class="font-serif" style="font-size: 1.25rem; margin-bottom: 20px;">Request New Maintenance Ticket</h3>
+            <form id="user-new-ticket-form">
+              <div class="grid-3">
+                <div class="form-group">
+                  <label class="form-label" for="ticket-villa">Select Property</label>
+                  <select id="ticket-villa" class="form-control">
+                    <option value="Villa Aurora">Villa Aurora (Monaco)</option>
+                    <option value="Villa Celeste">Villa Celeste (Amalfi)</option>
+                    <option value="Villa Solis">Villa Solis (Maldives)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ticket-issue">Detail Issue</label>
+                  <input type="text" id="ticket-issue" class="form-control" placeholder="Pool filter cleaning, AC checkup..." required>
+                </div>
+                <div class="form-group" style="justify-content: flex-end;">
+                  <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Ticket</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Active Tickets Table -->
+          <div class="table-card">
+            <h3 class="font-serif" style="font-size: 1.25rem; margin-bottom: 20px;">Active Maintenance Log</h3>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Ticket ID</th>
+                    <th>Property</th>
+                    <th>Issue Description</th>
+                    <th>Created Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="user-maintenance-table-body">
+                  <!-- Injected dynamically by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Housekeeping -->
+        <div class="dash-tab-pane" id="user-dash-housekeeping">
+          <h3 class="font-serif" style="font-size: 1.4rem; margin-bottom: 24px;">Active Housekeeping Roster</h3>
+          <div class="roster-grid" id="user-roster-container">
+            <!-- Housekeeping cards printed via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         ADMIN PORTAL (Elite Manager) - NO Main Header / Footer
+         ---------------------------------------------------------------------- -->
+    <div id="admin-dashboard-view" class="spa-view dashboard-layout">
+      <!-- Fixed Sidebar -->
+      <aside class="dash-sidebar">
+        <div class="dash-sidebar-logo">
+          <a href="#" class="logo-link" data-route="home1-view">
+            <span class="logo-icon">Æ</span>
+            <div style="display: flex; flex-direction: column; line-height: 1;">
+              <span class="logo-text font-serif">AURA</span>
+              <span class="logo-tagline">Elite Network</span>
+            </div>
+          </a>
+        </div>
+        <ul class="dash-sidebar-menu">
+          <li class="dash-menu-item active" data-dash-tab="overview">
+            <a href="#"><i class="fa-solid fa-chart-pie"></i> Overview</a>
+          </li>
+          <li class="dash-menu-item" data-dash-tab="income">
+            <a href="#"><i class="fa-solid fa-coins"></i> Global Billings</a>
+          </li>
+          <li class="dash-menu-item" data-dash-tab="occupancy">
+            <a href="#"><i class="fa-solid fa-calendar-week"></i> Occupancy Monitor</a>
+          </li>
+          <li class="dash-menu-item" data-dash-tab="maintenance">
+            <a href="#"><i class="fa-solid fa-screwdriver-wrench"></i> Maintenance Center</a>
+          </li>
+          <li class="dash-menu-item" data-dash-tab="housekeeping">
+            <a href="#"><i class="fa-solid fa-broom"></i> Roster Manager</a>
+          </li>
+        </ul>
+        <div class="dash-sidebar-footer">
+          <a href="#" class="logout-trigger" style="color: #E54B4B; display: flex; align-items: center; gap: 10px; font-weight: 600;">
+            <i class="fa-solid fa-power-off"></i> Logout
+          </a>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <div class="dash-main-area">
+        <!-- Top Bar inside Dashboard -->
+        <div class="dash-topbar">
+          <div class="dash-topbar-left">
+            <button class="toggle-btn dash-sidebar-toggle-btn" title="Toggle Sidebar">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+          </div>
+          <div class="dash-topbar-actions">
+            <button class="toggle-btn theme-toggle"><i class="fa-solid fa-moon"></i></button>
+            <button class="toggle-btn rtl-toggle lang-toggle">RTL</button>
+          </div>
+        </div>
+
+        <!-- TAB: Overview -->
+        <div class="dash-tab-pane active" id="admin-dash-overview">
+          <!-- Metrics Row -->
+          <div class="metrics-row">
+            <div class="metric-card">
+              <div class="metric-main-info">
+                <span class="metric-title">Gross Platform Billings</span>
+                <span class="metric-val">$8.24M</span>
+                <span class="metric-trend up"><i class="fa-solid fa-caret-up"></i> +16% vs last year</span>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-coins"></i></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-main-info">
+                <span class="metric-title">Managed Properties</span>
+                <span class="metric-val">174 Villas</span>
+                <span class="metric-trend up"><i class="fa-solid fa-caret-up"></i> +12 new onboarded</span>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-hotel"></i></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-main-info">
+                <span class="metric-title">Total Maintenance Tickets</span>
+                <span class="metric-val">3 active</span>
+                <span class="metric-trend down"><i class="fa-solid fa-caret-down"></i> Zero critical delays</span>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-main-info">
+                <span class="metric-title">Staff Roster Status</span>
+                <span class="metric-val">96% Completed</span>
+                <span class="metric-trend up"><i class="fa-solid fa-check"></i> Shift logs normal</span>
+              </div>
+              <div class="metric-icon-box"><i class="fa-solid fa-users"></i></div>
+            </div>
+          </div>
+
+          <!-- Charts -->
+          <div class="charts-grid-row">
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="chart-card-title font-serif">Platform Billings Flow</h3>
+                <span class="text-muted" style="font-size: 0.8rem;">Monthly platform-wide metrics</span>
+              </div>
+              <div class="chart-canvas-container">
+                <canvas id="admin-income-canvas"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="chart-card-title font-serif">Occupancy Rate Comparison</h3>
+                <span class="text-muted" style="font-size: 0.8rem;">Villas compared</span>
+              </div>
+              <div class="chart-canvas-container">
+                <canvas id="admin-occupancy-canvas"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Global Billings -->
+        <div class="dash-tab-pane" id="admin-dash-income">
+          <div class="table-card">
+            <div class="chart-card-header">
+              <h3 class="chart-card-title font-serif">Global Commission Invoice Register</h3>
+              <button class="btn btn-primary" onclick="alert('Syncing commission ledgers with corporate banking...')">Sync Ledgers</button>
+            </div>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Payout Period</th>
+                    <th>Property Owner</th>
+                    <th>Property Name</th>
+                    <th>Gross Income</th>
+                    <th>Platform Fee (15%)</th>
+                    <th>Owner Net Payout</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>May 2026</strong></td>
+                    <td>Lord Mountbatten</td>
+                    <td>Villa Aurora</td>
+                    <td>$407,000</td>
+                    <td>$61,050</td>
+                    <td>$345,950</td>
+                    <td><span class="status-pill success">Settled</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>May 2026</strong></td>
+                    <td>Sir Alexander Sterling</td>
+                    <td>Villa Celeste</td>
+                    <td>$528,000</td>
+                    <td>$79,200</td>
+                    <td>$448,800</td>
+                    <td><span class="status-pill success">Settled</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>May 2026</strong></td>
+                    <td>Lady Genevieve</td>
+                    <td>Villa Solis</td>
+                    <td>$640,000</td>
+                    <td>$96,000</td>
+                    <td>$544,000</td>
+                    <td><span class="status-pill warning">Pending Approval</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Occupancy Monitor -->
+        <div class="dash-tab-pane" id="admin-dash-occupancy">
+          <div class="dash-calendar-container">
+            <div class="dash-cal-header-row">
+              <h3 class="font-serif" style="font-size: 1.5rem;">Global Booking Calendar</h3>
+              <div style="display: flex; gap: 16px; font-size: 0.8rem;">
+                <span><i class="fa-solid fa-square" style="color: rgba(184, 144, 71, 0.2);"></i> Owner Reservation</span>
+                <span><i class="fa-solid fa-square" style="color: rgba(43, 108, 176, 0.2);"></i> Guest Booking</span>
+                <span><i class="fa-solid fa-square" style="color: rgba(229, 75, 75, 0.2);"></i> Maintenance Block</span>
+              </div>
+            </div>
+            <div id="admin-dash-calendar">
+              <!-- Grid generated via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Maintenance Center -->
+        <div class="dash-tab-pane" id="admin-dash-maintenance">
+          <div class="table-card">
+            <h3 class="font-serif" style="font-size: 1.25rem; margin-bottom: 20px;">Centralized Maintenance Tickets</h3>
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Ticket ID</th>
+                    <th>Property</th>
+                    <th>Issue Description</th>
+                    <th>Created Date</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-maintenance-table-body">
+                  <!-- Injected dynamically by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: Roster Manager -->
+        <div class="dash-tab-pane" id="admin-dash-housekeeping">
+          <!-- Housekeeping Creation Form -->
+          <div class="interactive-add-panel">
+            <h3 class="font-serif" style="font-size: 1.25rem; margin-bottom: 20px;">Create Housekeeping Assignment</h3>
+            <form id="admin-new-roster-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="roster-villa">Select Property Area</label>
+                  <select id="roster-villa" class="form-control">
+                    <option value="Villa Aurora - Yacht Mooring Deck">Villa Aurora - Yacht Mooring Deck</option>
+                    <option value="Villa Celeste - Sunset Lounge">Villa Celeste - Sunset Lounge</option>
+                    <option value="Villa Solis - Beach Cabana Area">Villa Solis - Beach Cabana Area</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="roster-staff-name">Housekeeper Staff Name</label>
+                  <input type="text" id="roster-staff-name" class="form-control" placeholder="Elena Rostova" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="roster-task-1">Task Description 1</label>
+                  <input type="text" id="roster-task-1" class="form-control" placeholder="Sanitize jacuzzi jets..." required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="roster-task-2">Task Description 2</label>
+                  <input type="text" id="roster-task-2" class="form-control" placeholder="Refill dry bar inventory..." required>
+                </div>
+              </div>
+              <div style="margin-top: 20px; text-align: right;">
+                <button type="submit" class="btn btn-primary">Assign Roster</button>
+              </div>
+            </form>
+          </div>
+
+          <h3 class="font-serif" style="font-size: 1.4rem; margin-bottom: 24px;">Global Cleaning Schedules</h3>
+          <div class="roster-grid" id="admin-roster-container">
+            <!-- Housekeeping cards printed via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       GLOBAL FOOTER SECTION
+       ========================================================================== -->
+  <footer id="footer-el" class="footer-wrapper">
+    <div class="container footer-grid">
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <a href="#" class="logo-link" data-route="home1-view">
+          <div class="logo-icon">Æ</div>
+          <div>
+            <span class="logo-text">Aura Elite</span>
+            <span class="logo-tagline">Private Network</span>
+          </div>
+        </a>
+        <p class="footer-desc">Curating yield pathways and bespoke logistics portfolios for luxury properties globally.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="footer-title">Network</h4>
+        <ul class="footer-links">
+          <li><a href="#" data-route="home1-view">Home 1</a></li>
+          <li><a href="#" data-route="home2-view">Home 2</a></li>
+          <li><a href="#" data-route="about-view">About Network</a></li>
+          <li><a href="#" data-route="services-view">Concierge Services</a></li>
+        </ul>
+      </div>
+
+      <!-- Dashboard -->
+      <div>
+        <h4 class="footer-title">Dashboard</h4>
+        <ul class="footer-links">
+          <li><a href="#" data-route="user-dashboard-view">User Dashboard</a></li>
+          <li><a href="#" data-route="admin-dashboard-view">Admin Dashboard</a></li>
+          <li><a href="#" class="login-trigger">Login Log</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="footer-title">Secretariat</h4>
+        <ul class="footer-links">
+          <li><a href="#" data-route="contact-view">Contact Secretariat</a></li>
+          <li><a href="#" onclick="alert('Discretion Agreements / NDAs parameters verified.')">discretion Agreements (NDA)</a></li>
+          <li><a href="#" onclick="alert('Encrypted privacy models active.')">Privacy Ledger</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom footer row -->
+    <div class="container footer-bottom">
+      <span>&copy; 2026 Aura Elite Private Network. All Rights Reserved. Private Ledger Custody.</span>
+      <div class="footer-social-icons">
+        <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>

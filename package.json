@@ -1,0 +1,10 @@
+{
+  "name": "private-villa-network",
+  "version": "1.0.0",
+  "description": "Luxury Concierge & Private Villa Management Network Dashboard",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server . -p 3000"
+  },
+  "dependencies": {}
+}
