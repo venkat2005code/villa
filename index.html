@@ -50,8 +50,11 @@
           <li class="nav-item" id="nav-about">
             <a href="#" class="nav-link" data-route="about-view">About</a>
           </li>
+          <li class="nav-item" id="nav-destinations">
+            <a href="#" class="nav-link" data-route="destinations-view">Destinations</a>
+          </li>
           <li class="nav-item" id="nav-services">
-            <a href="#" class="nav-link" data-route="services-view">Services</a>
+            <a href="#" class="nav-link" data-route="services-view">Villas</a>
           </li>
           <li class="nav-item" id="nav-contact">
             <a href="#" class="nav-link" data-route="contact-view">Contact</a>
@@ -108,7 +111,10 @@
         <a href="#" class="menu-title" data-route="about-view">About</a>
       </li>
       <li class="mobile-menu-item">
-        <a href="#" class="menu-title" data-route="services-view">Services</a>
+        <a href="#" class="menu-title" data-route="destinations-view">Destinations</a>
+      </li>
+      <li class="mobile-menu-item">
+        <a href="#" class="menu-title" data-route="services-view">Villas</a>
       </li>
       <li class="mobile-menu-item">
         <a href="#" class="menu-title" data-route="contact-view">Contact</a>
@@ -148,9 +154,10 @@
          ---------------------------------------------------------------------- -->
     <div id="home1-view" class="spa-view active">
       <!-- Section 1: Hero Cover -->
-      <section class="hero-h1" style="background-image: url('villa6.jpg');" id="h1-hero-sec">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
+      <section class="hero-h1" id="h1-hero-sec" style="position: relative;">
+        <div style="position: absolute; inset: 0; background-image: url('villa6.jpg'); background-size: cover; background-position: center; opacity: 0.35; z-index: 0;"></div>
+        <div class="hero-overlay" style="background: none; z-index: 1;"></div>
+        <div class="container hero-content" style="position: relative; z-index: 2;">
           <span class="hero-tag">Aura Elite Private Network</span>
           <h1 class="hero-title">High-Fidelity Yacht & Villa Network</h1>
           <p class="hero-desc">Bespoke asset custody, occupancy intelligence, and private concierge pipelines for discerning property owners.</p>
@@ -177,7 +184,7 @@
       </section>
 
       <!-- Section 2: Curated Collection -->
-      <section class="section-spacing container" id="h1-collection-sec">
+      <section class="section-compact container" id="h1-collection-sec">
         <div class="section-header center">
           <span class="subtitle">Curated Assets</span>
           <h2 class="title">Elite Real Estate Showcase</h2>
@@ -194,9 +201,9 @@
               <span class="villa-location">Monaco Coastline</span>
               <h3 class="villa-title">Villa Aurora</h3>
               <div class="villa-details">
-                <div class="villa-detail-item"><i class="fa-solid fa-bed"></i> 6 Beds</div>
-                <div class="villa-detail-item"><i class="fa-solid fa-bath"></i> 7 Baths</div>
-                <div class="villa-detail-item"><i class="fa-solid fa-expand"></i> 8,400 sq ft</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-bed-pulse"></i> 6 Beds</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-hot-tub-person"></i> 7 Baths</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-vector-square"></i> 8,400 sq ft</div>
               </div>
               <div class="villa-price">$18,500 <span>/ Night</span></div>
               <button class="btn btn-secondary login-trigger">Inquire Booking</button>
@@ -212,9 +219,9 @@
               <span class="villa-location">Amalfi Cliffs</span>
               <h3 class="villa-title">Villa Celeste</h3>
               <div class="villa-details">
-                <div class="villa-detail-item"><i class="fa-solid fa-bed"></i> 8 Beds</div>
-                <div class="villa-detail-item"><i class="fa-solid fa-bath"></i> 9 Baths</div>
-                <div class="villa-detail-item"><i class="fa-solid fa-expand"></i> 11,200 sq ft</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-bed-pulse"></i> 8 Beds</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-hot-tub-person"></i> 9 Baths</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-vector-square"></i> 11,200 sq ft</div>
               </div>
               <div class="villa-price">$24,000 <span>/ Night</span></div>
               <button class="btn btn-secondary login-trigger">Inquire Booking</button>
@@ -230,9 +237,9 @@
               <span class="villa-location">Maldives Private Island</span>
               <h3 class="villa-title">Villa Solis</h3>
               <div class="villa-details">
-                <div class="villa-detail-item"><i class="fa-solid fa-bed"></i> 5 Beds</div>
-                <div class="villa-detail-item"><i class="fa-solid fa-bath"></i> 6 Baths</div>
-                <div class="villa-detail-item"><i class="fa-solid fa-expand"></i> 7,900 sq ft</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-bed-pulse"></i> 5 Beds</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-hot-tub-person"></i> 6 Baths</div>
+                <div class="villa-detail-item"><i class="fa-solid fa-vector-square"></i> 7,900 sq ft</div>
               </div>
               <div class="villa-price">$32,000 <span>/ Night</span></div>
               <button class="btn btn-secondary login-trigger">Inquire Booking</button>
@@ -242,7 +249,7 @@
       </section>
 
       <!-- Section 3: Bespoke Services -->
-      <section class="section-spacing container" id="h1-services-sec">
+      <section class="section-compact container" id="h1-services-sec">
         <div class="section-header">
           <span class="subtitle">Bespoke Concierge</span>
           <h2 class="title">Seamless Lifestyle Operations</h2>
@@ -251,25 +258,25 @@
         <div class="grid-4">
           <!-- Card 1 -->
           <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-plane"></i></div>
+            <div class="feature-icon"><i class="fa-solid fa-plane-departure"></i></div>
             <h3 class="feature-title">Private Jet Charters</h3>
             <p class="feature-desc">Global flight scheduling and priority VIP custom clearances at your disposal 24/7.</p>
           </div>
           <!-- Card 2 -->
           <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-ship"></i></div>
+            <div class="feature-icon"><i class="fa-solid fa-anchor"></i></div>
             <h3 class="feature-title">Yacht Logistics</h3>
             <p class="feature-desc">Superyacht charters, deepwater mooring, and custom coastal itineraries managed quietly.</p>
           </div>
           <!-- Card 3 -->
           <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-utensils"></i></div>
+            <div class="feature-icon"><i class="fa-solid fa-bell-concierge"></i></div>
             <h3 class="feature-title">Michelin Chefs</h3>
             <p class="feature-desc">In-villa culinary operations, private wine collection pairing, and nutritional curation.</p>
           </div>
           <!-- Card 4 -->
           <div class="feature-card">
-            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="feature-icon"><i class="fa-solid fa-user-shield"></i></div>
             <h3 class="feature-title">Close Protection</h3>
             <p class="feature-desc">Elite discrete security rosters and secure high-armored transit logistics globally.</p>
           </div>
@@ -277,7 +284,7 @@
       </section>
 
       <!-- Section 4: Interactive Occupancy Preview -->
-      <section class="section-spacing container" id="h1-occupancy-sec">
+      <section class="section-compact container" id="h1-occupancy-sec">
         <div class="section-header center">
           <span class="subtitle">Occupancy Intelligence</span>
           <h2 class="title">Live Availability Preview</h2>
@@ -298,10 +305,10 @@
           </div>
           <div class="opp-calendar-view">
             <div class="opp-cal-header">
-              <h4 class="font-serif" style="font-size: 1.25rem;"><i class="fa-regular fa-calendar-days"></i> October 2026</h4>
+              <h4 class="font-serif" style="font-size: 1.25rem;"><i class="fa-regular fa-calendar-check"></i> October 2026</h4>
               <div style="display: flex; gap: 12px; font-size: 0.75rem;">
-                <span><i class="fa-solid fa-square" style="color: rgba(229, 75, 75, 0.2);"></i> Booked</span>
-                <span><i class="fa-solid fa-square" style="color: rgba(75, 181, 67, 0.2);"></i> Available</span>
+                <span><i class="fa-solid fa-lock" style="color: rgba(229, 75, 75, 0.4);"></i> Booked</span>
+                <span><i class="fa-solid fa-door-open" style="color: rgba(75, 181, 67, 0.4);"></i> Available</span>
               </div>
             </div>
             <div class="opp-cal-grid" id="opp-calendar-grid">
@@ -318,7 +325,19 @@
         </div>
       </section>
 
-      <!-- Section 5: Exclusive Club (Stats section) -->
+      <!-- Section 5: Guest Testimonials Carousel -->
+      <section class="section-compact container" id="h1-testimonials-sec">
+        <div class="testimonial-carousel glass-panel">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="testimonial-text">
+            "An unparalleled level of discretion and efficiency. Aura Elite's network has consistently provided us with exquisite properties and flawless security details."
+          </div>
+          <div class="testimonial-author">Lady Victoria Kensington</div>
+          <div class="testimonial-author-title">Charter Client</div>
+        </div>
+      </section>
+
+      <!-- Section 6: Exclusive Club (Stats section) -->
       <div class="container">
         <section class="stats-split-section" id="h1-stats-sec">
           <div class="stats-split-img" style="background-image: url('v5.jpg');"></div>
@@ -391,21 +410,6 @@
               <button class="btn btn-primary login-trigger">Access Dashboard</button>
               <button class="btn btn-secondary" data-route="contact-view">Private Inquiry</button>
             </div>
-          </div>
-          
-          <!-- Floating Spec Card on the Right -->
-          <div class="hero-h2-spec glass-panel">
-            <div class="spec-header">
-              <span class="spec-label">Active Showcase</span>
-              <span class="pulse-indicator"></span>
-            </div>
-            <h3 class="spec-title font-serif">Villa Zephyr</h3>
-            <p class="spec-desc">Coastline cliffs estate in Monaco. Fully integrated with automated guest booking protocols.</p>
-            <ul class="spec-mini-list">
-              <li><span>Jurisdiction:</span> <strong>Monaco Coast</strong></li>
-              <li><span>Net Yield:</span> <strong style="color: var(--color-accent);">14.2%</strong></li>
-              <li><span>Security Level:</span> <strong>Tier-1 Active</strong></li>
-            </ul>
           </div>
         </div>
       </section>
@@ -504,7 +508,7 @@
       <!-- Section 4: Owner Management Value Proposition -->
       <section class="section-spacing container" id="h2-mgmt-sec">
         <div class="grid-2">
-          <div>
+          <div class="section-header" style="margin-bottom: 0;">
             <span class="subtitle">Property Owners</span>
             <h2 class="title" style="margin-top: 10px;">Yield Optimization & Asset Custody</h2>
             <p class="desc" style="margin-bottom: 30px;">Managing premium real estate demands rigorous compliance, security reviews, and occupancy intelligence. We offer complete property automation with zero friction.</p>
@@ -595,7 +599,7 @@
 
       <section class="section-spacing container" id="about-heritage">
         <div class="about-heritage-grid">
-          <div>
+          <div class="section-header" style="text-align: left; margin-bottom: 20px;">
             <span class="subtitle">Our Foundation</span>
             <h2 class="title">Curating Discrete Havens Since 2012</h2>
             <div class="heritage-story">
@@ -925,6 +929,118 @@
           </div>
         </div>
       </section>
+
+      <!-- Services Testimonials Carousel -->
+      <section class="section-spacing container" id="services-testimonials-sec">
+        <div class="testimonial-carousel glass-panel">
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="testimonial-text">
+            "The culinary custody and private transit logistics are military-grade. We trust their Michelin-starred chefs and security teams entirely."
+          </div>
+          <div class="testimonial-author">Mr. Jonathan Hayes</div>
+          <div class="testimonial-author-title">Owner, Aspen Retreat</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         DESTINATIONS VIEW
+         ---------------------------------------------------------------------- -->
+    <div id="destinations-view" class="spa-view">
+      <!-- Hero Section -->
+      <section class="hero-sub" style="background-image: url('v9.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-sub-content">
+          <h1 class="hero-sub-title font-serif">Global Destinations</h1>
+          <p class="hero-sub-desc">Our meticulously curated network of private hubs and concierge nodes spanning the globe.</p>
+        </div>
+      </section>
+
+      
+      <section class="section-spacing container" id="coverage-details">
+        <div class="grid-3">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-plane-up"></i></div>
+            <h3 class="feature-title">Aviation Nodes</h3>
+            <p class="feature-desc">Active fixed-base operators and private hanger clearances across 14 major global flight corridors.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-anchor"></i></div>
+            <h3 class="feature-title">Maritime Ports</h3>
+            <p class="feature-desc">Deepwater mooring and yacht-to-villa transit networks active in the Mediterranean and Caribbean.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-car-rear"></i></div>
+            <h3 class="feature-title">Ground Transport</h3>
+            <p class="feature-desc">Armored transit and low-profile luxury motorcades available on demand at all active jurisdictions.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Destinations Showcase Deep Dives -->
+      <section class="parallax-destination-sec" style="background-image: url('dest_courchevel.png');">
+        <div class="parallax-overlay"></div>
+        <div class="container parallax-content align-left">
+          <div class="parallax-glass-card">
+            <span class="service-index font-sans" style="text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600;">01 / Swiss-French Alps</span>
+            <h3 class="service-title font-serif">Courchevel</h3>
+            <p class="service-desc">The ultimate winter playground for the elite. Our chalets in Courchevel offer ski-in/ski-out access, private chefs, and absolute discretion.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> Heli-ski drop clearances</li>
+              <li><i class="fa-solid fa-circle-check"></i> Bespoke alpine security protocols</li>
+              <li><i class="fa-solid fa-circle-check"></i> Michelin-grade private catering</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="parallax-destination-sec" style="background-image: url('dest_lakecomo.png');">
+        <div class="parallax-overlay"></div>
+        <div class="container parallax-content align-right">
+          <div class="parallax-glass-card">
+            <span class="service-index font-sans" style="text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600;">02 / Northern Italy</span>
+            <h3 class="service-title font-serif">Lake Como</h3>
+            <p class="service-desc">Classic Italian luxury defined. Enjoy historic lakeside estates with private boat docks and unrivaled tranquility.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> Riva yacht custody and docking</li>
+              <li><i class="fa-solid fa-circle-check"></i> Private seaplane transit</li>
+              <li><i class="fa-solid fa-circle-check"></i> Curated local wine cellars</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="parallax-destination-sec" style="background-image: url('dest_mykonos.png');">
+        <div class="parallax-overlay"></div>
+        <div class="container parallax-content align-left">
+          <div class="parallax-glass-card">
+            <span class="service-index font-sans" style="text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600;">03 / Aegean Sea</span>
+            <h3 class="service-title font-serif">Mykonos</h3>
+            <p class="service-desc">A fusion of vibrant nightlife and serene privacy. Our cliffside villas boast infinity pools with panoramic Aegean vistas.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> VIP nightlife access routing</li>
+              <li><i class="fa-solid fa-circle-check"></i> Helipad-equipped properties</li>
+              <li><i class="fa-solid fa-circle-check"></i> Deepwater offshore yacht mooring</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="parallax-destination-sec" style="background-image: url('dest_dubai.png');">
+        <div class="parallax-overlay"></div>
+        <div class="container parallax-content align-right">
+          <div class="parallax-glass-card">
+            <span class="service-index font-sans" style="text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600;">04 / United Arab Emirates</span>
+            <h3 class="service-title font-serif">Dubai</h3>
+            <p class="service-desc">Ultra-modern luxury in the sky. Our hyper-premium penthouses offer unparalleled views and state-of-the-art smart home integration.</p>
+            <ul class="service-features-list">
+              <li><i class="fa-solid fa-circle-check"></i> High-altitude armored transport</li>
+              <li><i class="fa-solid fa-circle-check"></i> 24/7 hyper-personalized concierge</li>
+              <li><i class="fa-solid fa-circle-check"></i> VIP desert excursion logistics</li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- ----------------------------------------------------------------------
@@ -1195,7 +1311,10 @@
               <i class="fa-brands fa-google"></i> Google
             </button>
             <button class="btn btn-secondary social-btn" onclick="alert('Facebook Auth session initializing...')">
-              <i class="fa-brands fa-facebook-f"></i> Facebook
+              <i class="fa-brands fa-facebook"></i> Facebook
+            </button>
+            <button class="btn btn-secondary social-btn" onclick="alert('Apple Auth session initializing...')">
+              <i class="fa-brands fa-apple"></i> Apple
             </button>
           </div>
 
@@ -1269,7 +1388,10 @@
               <i class="fa-brands fa-google"></i> Google
             </button>
             <button class="btn btn-secondary social-btn" onclick="alert('Facebook Auth session initializing...')">
-              <i class="fa-brands fa-facebook-f"></i> Facebook
+              <i class="fa-brands fa-facebook"></i> Facebook
+            </button>
+            <button class="btn btn-secondary social-btn" onclick="alert('Apple Auth session initializing...')">
+              <i class="fa-brands fa-apple"></i> Apple
             </button>
           </div>
 
@@ -1328,10 +1450,12 @@
             <button class="toggle-btn dash-sidebar-toggle-btn" title="Toggle Sidebar">
               <i class="fa-solid fa-bars"></i>
             </button>
+            <h2 class="dash-topbar-title font-serif">Welcome back, Owner</h2>
           </div>
           <div class="dash-topbar-actions">
             <button class="toggle-btn theme-toggle"><i class="fa-solid fa-moon"></i></button>
             <button class="toggle-btn rtl-toggle lang-toggle">RTL</button>
+            <button class="toggle-btn profile-toggle" title="Profile"><i class="fa-solid fa-circle-user"></i></button>
           </div>
         </div>
 
@@ -1572,10 +1696,12 @@
             <button class="toggle-btn dash-sidebar-toggle-btn" title="Toggle Sidebar">
               <i class="fa-solid fa-bars"></i>
             </button>
+            <h2 class="dash-topbar-title font-serif">Welcome back, Admin</h2>
           </div>
           <div class="dash-topbar-actions">
             <button class="toggle-btn theme-toggle"><i class="fa-solid fa-moon"></i></button>
             <button class="toggle-btn rtl-toggle lang-toggle">RTL</button>
+            <button class="toggle-btn profile-toggle" title="Profile"><i class="fa-solid fa-circle-user"></i></button>
           </div>
         </div>
 
@@ -1802,7 +1928,8 @@
           <li><a href="#" data-route="home1-view">Home 1</a></li>
           <li><a href="#" data-route="home2-view">Home 2</a></li>
           <li><a href="#" data-route="about-view">About Network</a></li>
-          <li><a href="#" data-route="services-view">Concierge Services</a></li>
+          <li><a href="#" data-route="destinations-view">Destinations</a></li>
+          <li><a href="#" data-route="services-view">Villas</a></li>
         </ul>
       </div>
 
@@ -1832,7 +1959,7 @@
       <span>&copy; 2026 Aura Elite Private Network. All Rights Reserved. Private Ledger Custody.</span>
       <div class="footer-social-icons">
         <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="#" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
         <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
       </div>
     </div>

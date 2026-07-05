@@ -180,6 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
       activeLinkId = 'nav-home';
     } else if (viewId === 'about-view') {
       activeLinkId = 'nav-about';
+    } else if (viewId === 'destinations-view') {
+      activeLinkId = 'nav-destinations';
     } else if (viewId === 'services-view') {
       activeLinkId = 'nav-services';
     } else if (viewId === 'contact-view') {
