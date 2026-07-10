@@ -569,7 +569,7 @@ img {
 }
 
 .hamburger-btn {
-  display: none;
+  display: none !important;
 }
 @media (max-width: 1024px) {
   .hamburger-btn {
